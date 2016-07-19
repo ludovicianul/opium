@@ -2,12 +2,15 @@ package com.insidecoding.opium.rest.api;
 
 import java.io.IOException;
 
+import javax.validation.constraints.Pattern;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +30,7 @@ public class DeviceHandleController {
 
   @CrossOrigin
   @RequestMapping(value = "/execute", method = RequestMethod.DELETE, consumes = "application/json")
-  public ResponseEntity<String> stop(@RequestBody OpiumCommand opiumCmd) {
+  public ResponseEntity<String> stop(@RequestBody @Validated OpiumCommand opiumCmd) {
     LOG.info("Got command: " + opiumCmd);
 
     ResponseEntity<String> response = null;
@@ -45,7 +48,7 @@ public class DeviceHandleController {
 
   @CrossOrigin
   @RequestMapping(value = "/execute", method = RequestMethod.POST, consumes = "application/json")
-  public ResponseEntity<String> execute(@RequestBody OpiumCommand opiumCmd) {
+  public ResponseEntity<String> execute(@RequestBody @Validated OpiumCommand opiumCmd) {
     LOG.info("Got command: " + opiumCmd);
 
     ResponseEntity<String> response = null;
@@ -63,8 +66,13 @@ public class DeviceHandleController {
 
   static class OpiumCommand {
 
+    @Pattern(regexp = "[\\w.]+")
     private String ip;
+
+    @Pattern(regexp = "\\w")
     private String deviceHash;
+
+    @Pattern(regexp = "[\\w\\-\\w ]+")
     private String command;
 
     @JsonCreator

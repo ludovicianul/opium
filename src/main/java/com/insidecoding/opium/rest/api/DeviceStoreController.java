@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
@@ -37,15 +38,20 @@ public class DeviceStoreController {
 
   @CrossOrigin
   @RequestMapping(value = "/device", method = RequestMethod.PUT, consumes = "application/json")
-  public ResponseEntity<String> storeTest(@RequestBody List<Device> devices) {
+  public ResponseEntity<String> storeTest(HttpServletRequest request, @RequestBody List<Device> devices) {
     LOG.info("on PUT ... Persisting devices ..." + devices);
 
     try {
       String ip = "";
       if (devices.size() > 0) {
         ip = devices.get(0).getIp();
+        deviceStore.store(ip, devices);
+      } else {
+        ip = request.getRemoteAddr();
+        deviceStore.removeAgent(ip);
+        LOG.info("received ip = " + ip);
       }
-      deviceStore.store(ip, devices);
+      
 
     } catch (ConstraintViolationException e) {
       Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
