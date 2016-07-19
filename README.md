@@ -1,2 +1,2 @@
 # opium
-Mobile Devices Management Across Network
+A simple way to interact with mobile devices across your network. 
