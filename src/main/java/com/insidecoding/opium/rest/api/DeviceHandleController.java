@@ -69,7 +69,7 @@ public class DeviceHandleController {
     @Pattern(regexp = "[\\w.]+")
     private String ip;
 
-    @Pattern(regexp = "\\w")
+    @Pattern(regexp = "[\\w]+")
     private String deviceHash;
 
     @Pattern(regexp = "[\\w\\-\\w ]+")
