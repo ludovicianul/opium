@@ -1,8 +1,8 @@
 # opium
 Opium builds on top of Appium and allows remote test execution and device interaction across local networks. 
 Opium has 2 components:
-- this project, also called the Opium Hive: allows remote device registration using Opium Agents and exposes a simple REST api to see the available devices
-- Opium Agents which register mobile devices and sends the relevant connection information to the Hive
+- this project, also called the Opium Hive: allows remote device registration using [Opium Agents](https://github.com/ludovicianul/opium.agent) and exposes a simple REST api to see the available devices
+- [Opium Agents](https://github.com/ludovicianul/opium.agent) which register mobile devices and sends the relevant connection information to the Hive
 
 # build the project
 
@@ -22,9 +22,9 @@ Once Appium is started you can interact directly with the Appium server using th
 A typical use case will look as follows:
 - call `GET /device`
 - pick an appropiate device based on Android version, device type, etc
-- do a `POST /execute` and start the Appium server for that device by sending the Appium paramters, device hash and host IP address
+- do a `POST /execute` and start the Appium server for that device by sending the Appium start paramters(like `-p 9999` for example), device hash and host IP address
 - once Appium started, interact execute the tests against the Appium instance
-- when tests finished, stop the Appium instance using `DELETE /execute` by sending the running port, device hash and IP address of the host
+- when tests are finished, stop the Appium instance using `DELETE /execute` by sending the running port(`9999` above for example), device hash and IP address of the host
 
 # persistence
 The Hive uses in memory persistence. Even if the Hive fails and needs restart, all agents will re-register within 10 seconds.
@@ -36,7 +36,7 @@ The Hive continuosly monitors agents availability and will remove any unavailabl
 Opium only works with Android devices. 
 
 # pre-requisits
-Opium needs Opium Agents deployed on the computers were the Android devices will be connected. Furthermore, Appium needs to be installed in order to further run the automated tests.
+Opium needs [Opium Agents](https://github.com/ludovicianul/opium.agent) deployed on the computers were the Android devices will be connected. Furthermore, Appium needs to be installed in order to further run the automated tests.
 
 # build
 [![Build Status](https://snap-ci.com/ludovicianul/opium/branch/master/build_image)](https://snap-ci.com/ludovicianul/opium/branch/master)
