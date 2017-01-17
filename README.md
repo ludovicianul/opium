@@ -1,5 +1,5 @@
 # opium
-Opium builds on top of Appium and allows remote test execution and device interaction across local networks. 
+Opium builds on top of [Appium](http://appium.io/) and allows remote test execution and device interaction across local networks. 
 Opium has 2 components:
 - this project, also called the Opium Hive: allows remote device registration using [Opium Agents](https://github.com/ludovicianul/opium.agent) and exposes a simple REST api to see the available devices
 - [Opium Agents](https://github.com/ludovicianul/opium.agent) which register mobile devices and sends the relevant connection information to the Hive
@@ -37,6 +37,9 @@ Opium only works with Android devices.
 
 # pre-requisits
 Opium needs [Opium Agents](https://github.com/ludovicianul/opium.agent) deployed on the computers were the Android devices will be connected. Furthermore, Appium needs to be installed in order to further run the automated tests.
+
+# os compatibility
+Tested on Windows, Ubuntu and OS X.
 
 # build
 [![Build Status](https://snap-ci.com/ludovicianul/opium/branch/master/build_image)](https://snap-ci.com/ludovicianul/opium/branch/master)
