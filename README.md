@@ -14,7 +14,17 @@ The project starts by default on port 2020
 
 # available api
 APIs exposed are available under `http://localhost:2020/swagger-ui.html`
-The most important API is `/devices` which lists all the available devices registered at a certain moment. Using details received in the response you can interact directly with the specific host using the Opium Agent's API.
+The most important APIs
+- `GET /device` which lists all the available devices registered at a certain moment
+- `POST /execute` used to send the command to start Appium
+- `DELETE /execute` used to stop Appium
+Once Appium is started you can interact directly with the Appium server using the IP received in the `/device` response and using the port sent when Appium started.
+A typical use case will look as follows:
+- call `GET /device`
+- pick an appropiate device based on Android version, device type, etc
+- do a `POST /execute` and start the Appium server for that device by sending the Appium paramters, device hash and host IP address
+- once Appium started, interact execute the tests against the Appium instance
+- when tests finished, stop the Appium instance using `DELETE /execute` by sending the running port, device hash and IP address of the host
 
 # persistence
 The Hive uses in memory persistence. Even if the Hive fails and needs restart, all agents will re-register within 10 seconds.
