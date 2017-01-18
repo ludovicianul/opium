@@ -1,5 +1,5 @@
 # opium
-Opium builds on top of [Appium](http://appium.io/) and allows remote test execution and device interaction across local networks. 
+Opium builds on top of [Appium](http://appium.io/) and facilitates remote test execution and device interaction across local networks. 
 Opium has 2 components:
 - this project, also called the Opium Hive: allows remote device registration using [Opium Agents](https://github.com/ludovicianul/opium.agent) and exposes a simple REST api to see the available devices
 - [Opium Agents](https://github.com/ludovicianul/opium.agent) which register mobile devices and sends the relevant connection information to the Hive
@@ -19,6 +19,7 @@ The most important APIs
 - `POST /execute` used to send the command to start Appium
 - `DELETE /execute` used to stop Appium
 Once Appium is started you can interact directly with the Appium server using the IP received in the `/device` response and using the port sent when Appium started.
+
 A typical use case will look as follows:
 - call `GET /device`
 - pick an appropiate device based on Android version, device type, etc
