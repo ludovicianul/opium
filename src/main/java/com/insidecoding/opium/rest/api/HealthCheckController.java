@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class HealthCheckController {
 
-  @CrossOrigin
-  @ResponseStatus(code = HttpStatus.OK)
-  @RequestMapping(value = "/ping", method = RequestMethod.HEAD)
-  public void ping() {
-  }
+    @CrossOrigin
+    @ResponseStatus(code = HttpStatus.OK)
+    @RequestMapping(value = "/ping", method = RequestMethod.HEAD)
+    public void ping() {
+    }
 }

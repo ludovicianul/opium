@@ -4,20 +4,20 @@ import org.springframework.http.HttpStatus;
 
 public class OpiumCallResponse {
 
-  private HttpStatus statusCode;
-  private String responseBody;
+    private HttpStatus statusCode;
+    private String responseBody;
 
-  public OpiumCallResponse(int statusCode, String responseBody) {
-    this.statusCode = HttpStatus.valueOf(statusCode);
-    this.responseBody = responseBody;
-  }
+    public OpiumCallResponse(int statusCode, String responseBody) {
+        this.statusCode = HttpStatus.valueOf(statusCode);
+        this.responseBody = responseBody;
+    }
 
-  public HttpStatus getStatusCode() {
-    return statusCode;
-  }
+    public HttpStatus getStatusCode() {
+        return statusCode;
+    }
 
-  public String getResponseBody() {
-    return responseBody;
-  }
+    public String getResponseBody() {
+        return responseBody;
+    }
 
 }
