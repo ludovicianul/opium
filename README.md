@@ -1,3 +1,5 @@
+![Java CI](https://github.com/ludovicianul/opium/workflows/Java%20CI/badge.svg?branch=master)
+
 # opium
 Opium builds on top of [Appium](http://appium.io/) and facilitates remote test execution and device interaction across local networks. 
 Opium has 2 components:
